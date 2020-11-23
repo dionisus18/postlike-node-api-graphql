@@ -1,0 +1,40 @@
+//Data source: Tells Prisma you’ll be using SQLite for your database connection.
+datasource db {
+    provider = "sqlite"
+    url      = "file:./dev.db"
+}
+
+//Generator: Indicates that you want to genenerate Prisma Client.
+generator client {
+    provider = "prisma-client-js"
+}
+
+//Data model: Here, we have written out our Link as a model.
+model Link {
+    id          Int      @id @default(autoincrement())
+    createdAt   DateTime @default(now())
+    description String
+    url         String
+    postedBy    User?    @relation(fields: [postedById], references: [id])
+    postedById  Int?
+    votes       Vote[]
+}
+
+model User {
+    id       Int    @id @default(autoincrement())
+    name     String
+    email    String @unique
+    password String
+    links    Link[]
+    votes    Vote[]
+}
+
+model Vote {
+    id     Int  @id @default(autoincrement())
+    link   Link @relation(fields: [linkId], references: [id])
+    linkId Int
+    user   User @relation(fields: [userId], references: [id])
+    userId Int
+
+    @@unique([linkId, userId])
+}

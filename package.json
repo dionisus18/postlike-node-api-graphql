@@ -1,0 +1,28 @@
+{
+  "name": "hackersnews-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "grahql",
+    "prisma",
+    "API",
+    "node",
+    "tutorial"
+  ],
+  "author": "Kevin Gonzalez",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^2.11.0",
+    "bcryptjs": "^2.4.3",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.11.0"
+  }
+}
